@@ -4,8 +4,8 @@ in its most classic form:
   -- Iterate all the way through the sequence, from beginning to end.
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Mason Hancock.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -20,7 +20,7 @@ def main():
 def run_test_count_negatives():
     """ Tests the   count_negatives   function. """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement this TEST function.
+    # Done: 2. Implement this TEST function.
     #   It TESTS the  count_negatives  function defined below.
     #   Include at least ** 2 ** ADDITIONAL tests beyond those we wrote.
     #
@@ -83,6 +83,20 @@ def run_test_count_negatives():
 
     # TO DO 2 (continued):  Add your 2 ADDITIONAL tests here:
 
+    # Test 6:
+    expected = 4
+    actual = count_negatives((7, 4, 5, -2, -.025, 98, -100, -45871, 451, 1))
+    print()
+    print('Test 6 expected:', expected)
+    print('       actual:  ', actual)
+
+    # Test 7:
+    expected = 7
+    actual = count_negatives((-1, -2, -3, -4, -5, -6, -7, 8, 9, 10))
+    print()
+    print('Test 7 expected:', expected)
+    print('       actual:  ', actual)
+
 
 def count_negatives(seq):
     """
@@ -100,15 +114,22 @@ def count_negatives(seq):
       :type seq: list or tuple
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # Done: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # ------------------------------------------------------------------
+    length = len(seq)
+    count = 0
+    for k in range(length):
+        if seq[k] < 0:
+            count += 1
+
+    return count
 
 
 def run_test_count_short_ones():
     """ Tests the   count_short_ones   function. """
     # ------------------------------------------------------------------
-    # TODO: 4. Implement this TEST function.
+    # Done: 4. Implement this TEST function.
     #   It TESTS the  count_short_ones  function defined below.
     #   Include at least ** 2 ** ADDITIONAL tests beyond those we wrote.
     #
@@ -183,6 +204,22 @@ def run_test_count_short_ones():
 
     # TO DO 4 (continued):  Add your 2 ADDITIONAL test(s) here:
 
+    # Test 8:
+    expected = 1
+    seq = [[0, 1], [1, 2, 3, 4, 5], 'abcde', [-3, 0, 3], 'cats']
+    actual = count_short_ones(seq)
+    print()
+    print('Test 8 expected:', expected)
+    print('       actual:  ', actual)
+
+    # Test 9:
+    expected = 2
+    seq = [[0], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 'Rose-Hulman', [-1, 3]]
+    actual = count_short_ones(seq)
+    print()
+    print('Test 9 expected:', expected)
+    print('       actual:  ', actual)
+
 
 def count_short_ones(seq_of_lists):
     """
@@ -205,9 +242,16 @@ def count_short_ones(seq_of_lists):
       :type seq_of_lists: list or tuple (whose items are sequences too)
     """
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # Done: 5. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # ------------------------------------------------------------------
+    count = 0
+    for k in range(len(seq_of_lists)):
+        if len(seq_of_lists[k]) < 3:
+            # print(seq_of_lists[k])
+            # print(len(seq_of_lists[k]))
+            count += 1
+    return count
 
 
 def run_test_draw_circles():
@@ -286,9 +330,16 @@ def draw_circles(window, points, radius, color):
       :type color: str
     """
     # ------------------------------------------------------------------
-    # TODO: 6. Implement and test this function.
+    # Done: 6. Implement and test this function.
     #          Tests have been written for you (above).
     # ------------------------------------------------------------------
+
+    for k in range(len(points)):
+        center = points[k]
+        circle = rg.Circle(center, radius)
+        circle.fill_color = color
+        circle.attach_to(window)
+    window.render()
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
